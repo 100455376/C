@@ -1,0 +1,272 @@
+// Learning C
+// Header files add functionalities to C programs
+#include <stdio.h> // Header file library that let us work with input and output functions such as printf()
+#include <stdbool.h>
+# include <string.h>
+
+// In C, spaces are ignored and ; is always used at end of a statement, main() always appears with the code to be executed
+
+int main() {
+    
+    printf("Hello World"); // Output: printf()
+    printf("!"); // Can use several printf() but no new line is inserted
+    printf("\nI am learning C\n"); // So add \n (this is the escape sequence, it forces the cursor to change its position to the beggining of the next line on the screen
+    printf("Let's create 1 \n\nempty line"); // Using \n\n we create an empty line
+    // With the escape sequence \t we create a horizontal tab; with \\ we insert a backslash character(\) and with \" we insert a double quote character
+    printf("\nCreating tab\t");
+    printf("Using tab\n");
+    
+    /* If I want to create a
+     multiline comment, use /*
+     */
+    
+    // VARIABLES:
+    /*int - stores integers (whole numbers), without decimals, such as 123 or -123
+    float - stores floating point numbers, with decimals, such as 19.99 or -19.99
+    double - Stores fractional numbers, containing one or more decimals. Sufficient for storing 15 decimal digits
+    char - stores single characters, such as 'a' or 'B'. NOTE: Char values are surrounded by single quotes*/
+    /*The general rules for naming variables are:
+     Names can contain letters, digits and underscores
+     Names must begin with a letter or an underscore (_)
+     Names are case sensitive (myVar and myvar are different variables)
+     Names cannot contain whitespaces or special characters like !, #, %, etc.
+     Reserved words (such as int) cannot be used as names*/
+    
+    int num = 7; // Declare (always use a unique name called identifier
+    int n; // Also like this
+    n=8;
+    // Format specifiers are used with printf() function to tell compiler the type of data variable is storing.
+    printf("\nNumber one is: %d and two: %i", num, n); // Use %d or %i with integers
+    float f = 3.14;
+    char c = 'A';
+    printf("\nMap %c to %f", c, f); // %lf for double
+    n = 10; // Overwrite a value
+    num = n;
+    int x,y,z;
+    x=y=z=20;
+    printf("%d, %d", x+y+z, x*y*z);
+    printf("Float adjusted: %.1f, %.3f", f, f); // When printing a float I can set decimal precision using .
+    
+    float ff = 9; // Numbers are converted implicitly if done as this ff=9.000000
+    float sum = (float)5/2; // Explicitly
+    printf("\n%.2f", sum); // 2.50000
+    float sum2 = 5/2; // Explicitly
+    printf("\n%.2f", sum2); // 2.00000
+    
+    // CONSTANTS: if do not want others to change existing variable values, one can use const which declares variables as unchangeable and read-only
+    const int MINSPERHOUR = 60; // When declared as constant a value must be assigned
+    const float PI = 3.1415; // Good practice to do it in capital letters
+    
+    // OPERATORS are used to perform operations on variables and values
+    // +, -, *, /, % for modulus, ++ increments, --decremet
+    // += (x=x+3), -= (x=x-3), *= (x=x*3), /= (x=x/3), %= (x=x%3), &= (x=x&3), |= (x=x|3), ^= (x=x^3)
+    // >>= (x=x>>3)
+    // For comparison: == (equal to); != (not euqal to); >; <; >=; <=
+    // For logical operators: && logical and (returns true if both statements is true) (x<5 && x<10); || logical or (returns true if one of statements is true) (x<5||x<4); ! logical not (reverses result) !(x<5 && x<10)
+    
+    printf("\n%lu\n", sizeof(num));// Sizeof returns the memory size (in bytes) of data type r variable. To get the sizeof operator we use %lu since it returns a long unsigned int
+    
+    // BOOLEANS: need to include the header #include <stdbool.h>
+    bool isthisgood = true; // (false)
+    printf("\nIs this good: %d", isthisgood); // Returns 1(0)
+    printf("\n%d", 10 > 9); // To compare
+    bool isHamburgerTasty = true;
+    bool isPizzaTasty = true;
+    printf("\n%d", isHamburgerTasty == isPizzaTasty);
+    
+    // IF...ELSE
+    if (20>10){
+        printf("\n20>10");
+    }
+    int time = 22;
+    if (time < 10) {
+      printf("\nGood morning.");
+    } else if (time < 20) {
+      printf("\nGood day.");
+    } else {
+      printf("\nGood evening.");
+    }
+    // Can also use the short hand if...else
+    time = 20;
+    (time < 10) ? printf("\nGood day.\n") : printf("\nGood evening.\n");
+    
+    // SWITCH: to avoid many if...else
+    int day = 4;
+    switch (day) {
+      case 1:
+        printf("Monday");
+        break;
+      case 2:
+        printf("Tuesday");
+        break;
+      case 3:
+        printf("Wednesday");
+        break;
+      case 4:
+        printf("Thursday");
+        break;
+      case 5:
+        printf("Friday");
+        break;
+      case 6:
+        printf("Saturday");
+        break;
+      case 7:
+        printf("Sunday");
+        break;
+    default:
+        printf("Looking forward to the weekend");
+    }
+    // The break keyword is used to break out of the switch block. It will stop execution of more code and case testing inside the block. When a match is found, break, no need to test more.
+    // The default keyword specifies some code to run if there is no case match; only one per switch
+    
+    // WHILE
+    int i = 0;
+    while (i < 5) {
+      printf("%d\n", i);
+      i++;
+    }
+    
+    // DO.WHILE
+    i = 0;
+    do {
+      printf("%d\n", i);
+      i++;
+    }
+    while (i < 5);
+    
+    // FOR LOOP
+    i=0;
+    for (i = 0; i < 5; i++) {
+      printf("%d\n", i); // We can also next loops. Note that I can also use break inside for loop
+    }
+    // continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop
+    for (i = 0; i < 10; i++) {
+      if (i == 4) {
+        continue; // Output is 0 1 2 3 5 6 7 8 9
+      }
+      printf("%d\n", i);
+    }
+    
+    // ARRAYS: They are used to store multiple values in a single variable, instead of declaring separate variables for each value. datatype name[]
+    int mynums[] = {21, 50, 74, 110};
+    printf("\n%d", mynums[1]);// To access the element of an array refer to its index number
+    mynums[0] = 33; // To change an element of an array refer to the index number
+    printf("\n%d", mynums[0]);
+    for (i=0; i<4; i++) {
+        mynums[i] = i+3;
+        printf(" %d ", mynums[i]);
+    }// Can loop in an array. Note that size of an array cannot be changed
+    
+    // MULTIDEMSNIONAL ARRAYS
+    int matrix[2][3] = {{1, 2, 3}, {4, 7, 8}};
+    for (i=0; i<2; i++) {
+        for (int j=0; j<3; j++) {
+            printf(" %d ", matrix[i][j]); // 1  2  3  4  7  8
+        }
+    }
+    
+    // STRINGS: They are used for storing text/characters. There is no string type in C; instead we have to create an array of characters to make strings in C.
+    char greet[] = "Hello world";
+    printf("\n%s", greet);
+    printf("\n%c\n", greet[1]); // Can access strings as they are just arrays
+    greet[1] = 'E'; // And so we can modify a specific character in a string; also can loop
+    printf("%c\n", greet[1]);
+    char greetings[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'}; // Another way for creating strings; Why do we include the \0 character at the end? This is known as the "null terminating character", and must be included when creating strings using this method. It tells C that this is the end of the string.
+    printf("\n %s", greetings);
+    // Somtimes we may want to include some special characters
+    // The sequence \"  inserts a double quote in a string:
+    char txt[] = "We are the so-called \"Vikings\" from the north.";
+    // The sequence \'  inserts a single quote in a string:
+    char text[] = "It\'s alright.";
+    // The sequence \\  inserts a single backslash in a string:
+    char texet[] = "The character \\ is called backslash.";
+    
+    // STRING FUNCTIONS: Use <string.h> header
+    char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    printf("\n%d", strlen(alphabet)); // 26
+    printf("\n%d", sizeof(alphabet)); // 27 (It is including the \0 NOT desired)
+    char abet[50] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Also, sizeof returns the memory size (in bytes) and not the actual string length:
+    printf("\n%d", sizeof(abet)); // 50
+    
+    char str1[20] = "Hello "; // Set space at the end so not all together
+    char str2[] = "World";
+    strcat(str1, str2);// CONCATENATE STRINGS
+    printf("\n%s", str1); // Note that size of string1 should be large enough to store the 2 strings combined
+    
+    char st1[20] = "Hello World";
+    char st2[20];
+    strcpy(st2, st1); // COPY STRINGS
+    printf("\n%s", st2);
+
+    printf("\n%d", strcmp(str1, st2)); // COMPARE STRINGS (returns 0 if strings are equal)
+    char st3[] = "Hi";
+    printf("\n%d\n", strcmp(st3, st2)); // Returns other than 0 (4, strings are not equal)
+    
+    // USER INPUT: use scanf() (it takes 2 arguments: format specifier of variable (%d below example) and reference operator (&n), which stores the memory address of the variable)
+    /*printf("Introduce a number: ");
+    scanf("%d", &n);
+    printf("Your number is: %d", n);
+    char myc; // MULTIPLE INPUTS
+    printf("Introduce a number AND a character and press enter: ");
+    scanf("%d %c", &n, &c);
+    printf("\nYour number is: %d", n);
+    printf("\nYour character is: %c", myc); */
+    
+    /*char name[30]; // STRING INPUT
+    printf("Introduce a name: ");
+    scanf("%s", name); // NOte one porblem this have is that when entering a name with some space, it considers spaces (whitespaces, tabs...) as terminating character, so it will only display one word
+    printf("Hello %s", name);*/
+    
+    /*char fullName[30]; // So we use fgets() function to read one lineof text
+    printf("Type your full name: \n");
+    fgets(fullName, sizeof(fullName), stdin); // Arguments are name of string variable, sizeof(string_name) and stdin
+    printf("Hello %s", fullName); // Enter Jose María and that is the output*/
+    
+    // ADDRESS: When a variable is created in C, a memory address is assigned to the variable. -> The memory address is the location of where the variable is stored on the computer. -> When we assign a value to the variable, it is stored in this memory address. -> To access it, use the reference operator (&), and the result represents where the variable is stored:
+    n=21;
+    printf("\n%p", &n); // Outputs 0x7ff7bfeff104
+    // Note: &n is often called a "pointer". A pointer basically stores the memory address of a variable as its value. To print pointer values, we use the %p format specifier.
+    
+    // POINTERS: variable that stores the memory address of another variable as its value. -> A pointer variable points to a data type (like int) of the same type, and is created with the * operator. -> The address of the variable you are working with is assigned to the pointer:
+    
+    int age = 21;
+    int* ptr = &age; // Here the * sign creates a pointer variable (can also declare as int *ptr)
+    printf("\n%d", age); // Outputs 21
+    printf("\n%p", &age); // Outputs 0x7ff7bfeff0b8
+    printf("\n%p", ptr); // Outputs 0x7ff7bfeff0b8
+    printf("\n%d", *ptr); // Outputs 21 // Here the * sign acts as dereference operator
+    // Example explained: Create a pointer variable with the name ptr, that points to an int variable (myAge). Note that the type of the pointer has to match the type of the variable you're working with (int in our example). -> Use the & operator to store the memory address of the myAge variable, and assign it to the pointer. -> Now, ptr holds the value of myAge's memory address. -> You can also get the value of the variable the pointer points to, by using the * operator (the dereference operator):
+    
+    // This is what differentiates from Java and Python. Since we can manipulate data in computer's memory, reducing code and improving performance. If you are familiar with data structures like lists, trees and graphs, you should know that pointers are especially useful for implementing those.
+    
+    // POINTERS & ARRAYS
+    int myNumbers[4] = {25, 50, 75, 100};
+    for (i = 0; i < 4; i++) {
+      printf("%d\n", myNumbers[i]);
+    } // 25 50 75 100
+    // Instead of printing the value of each array element, let's print the memory address of each array element:
+    for (i = 0; i < 4; i++) {
+      printf("%p\n", &myNumbers[i]);
+    } // 0x7ff7bfeff100 0x7ff7bfeff104 0x7ff7bfeff108 0x7ff7bfeff10c (each of the elements of memory addres is different, with an addition of 4, i.e. because size of int is 4 bytes
+    int myInt;
+    printf("%lu", sizeof(myInt)); // 4, compiler reserves 4 bytes of memory for each array element, meaning that the entire array takes up 16 bytes (4*4) of memory storage
+    printf("%lu", sizeof(myNumbers)); // 16
+    
+    // Now, the name of an array is actually a pointer to the first element of the array; the memory address of the first element is the same as the name of the array
+    printf("\n%p", myNumbers); // 0x7ff7bfeff100
+    printf("\n%p", &myNumbers[0]); // 0x7ff7bfeff100
+    // Hence, I can use * operator to access the first element in myNumbers
+    printf("\n%d", *myNumbers); // 25
+    printf("\n%d", *(myNumbers + 2)); // 75
+    int *pt = myNumbers;
+    for (i = 0; i < 4; i++) {
+      printf("\n%d", *(pt + i)); // 25 50 75 100
+    }
+    // Can also modify the value of array elements with pointers
+    *myNumbers
+    
+    
+    printf("\n");
+    return 0;
+}
